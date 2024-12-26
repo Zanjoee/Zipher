@@ -1,0 +1,229 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.rules {
+    padding: 0 20px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.rules span {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.deletion p {
+    font-size: 14px;
+    line-height: 10px;
+}
+
+.message {
+    margin: 100px auto; /* Center horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px; /* Adjust for better layout on large screens */
+    width: 90%; /* Ensure responsiveness */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 100px;
+}
+
+.navbar {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out the logo and nav links */
+    align-items: center; /* Center items vertically */
+    background-color: white; /* Navbar background */
+    padding: 5px 150px; /* Add some horizontal padding */
+    border-bottom: 1px solid #ccc; /* Optional: Border for the navbar */
+    height: 65px; /* Set consistent navbar height */
+}
+
+.logo_title {
+    font-family: "Reenie Beanie";
+    font-size: 30px; /* Adjust logo font size */
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Logo text color */
+}
+
+.nav-links {
+    display: flex; /* Use flexbox to align nav links horizontally */
+    gap: 100px; /* Space between links */
+    list-style: none; /* Remove bullets from list */
+}
+
+.nav-links a {
+    text-decoration: none; /* Remove underline */
+    color: #4B5563; /* Nav link text color */
+    font-size: 16px; /* Adjust font size */
+}
+
+.nav-links a:hover {
+    color: #1f2937; /* Change color on hover */
+}
+
+/* Form Styles */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-field {
+    padding: 12px; /* Increase padding for input fields */
+    font-size: 16px; /* Larger font size for better readability */
+    border: 1px solid #999; /* Slightly darker border */
+    border-radius: 8px; /* Adjust border-radius for a cleaner look */
+}
+
+textarea {
+    min-height: 100px; /* Larger text area */
+    font-size: 16px; /* Match font size with inputs */
+}
+    
+.btn-primary {
+    font-size: 20px;
+    background-color: #171717;
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #222222;
+}
+
+.input-group label {
+    font-size: 16px; /* Increase label font size */
+    font-weight: 400; /* Slightly bold for emphasis */
+}
+
+/* Browse Page Styles */
+.browse-container {
+    margin: 50px auto;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+}
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message-item {
+    font-family: "Reenie Beanie";
+    padding: 5px 20px;
+    background-color: white;
+    color: #333;
+    border: .5px solid #9999;
+    border-radius: 15px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-item .recipient {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: -15px;
+}
+
+.message-item .recipient span {
+    color: #222222;
+}
+
+.message-item .message-text {
+    font-size: 25px;
+    line-height: 1;
+}
+
+/* Active Nav Link */
+.nav-links a.active {
+    color: #222222;
+    font-weight: bold;
+}
+
+
+/* Responsive Navbar for Smaller Screens */
+@media (max-width: 768px) {
+    .navbar {
+        display: flex;
+        flex-direction: row; /* Keep items in a row */
+        justify-content: space-between; /* Space out the logo and links */
+        align-items: center; /* Vertically center the items */
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+    }
+
+    .logo_title {
+        font-size: 30px; /* Slightly smaller logo for smaller screens */
+    }
+
+    .nav-links {
+        display: flex; /* Maintain horizontal alignment */
+        flex-direction: row; /* Ensure links stay in a row */
+        gap: 20px; /* Adjust spacing between links */
+        list-style: none; /* Remove list styling */
+    }
+
+    .nav-links a {
+        font-size: 16px; /* Slightly smaller font size for readability */
+        text-decoration: none; /* Remove underline */
+        color: #4B5563; /* Keep link color consistent */
+    }
+
+    .nav-links a:hover {
+        color: #1f2937; /* Hover effect for links */
+    }
+
+    footer p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px; /* Reduce padding for very small screens */
+    }
+
+    .logo_title {
+        font-size: 29px; /* Further reduce logo font size */
+    }
+
+    .nav-links {
+        gap: 20px; /* Reduce gap for tighter spacing */
+    }
+
+    .nav-links a {
+        font-size: 15px; /* Adjust font size for very small screens */
+    }
+    .notification {
+        top: 97px;
+        right: 23px;
+        font-size: 14px;
+        padding: 7px 58px;
+    }
+}

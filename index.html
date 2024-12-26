@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zipher - Send message anonymously</title>
+    <meta name="description" content="Express your feelings through anonymous messages.">
+    <link rel="icon" href="icon.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="__next">
+        <nav class="navbar">
+            <a href="/" class="logo_title">Zipher</a>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Submit</a></li>
+                <li><a href="browse.html">Browse</a></li>
+            </ul>
+        </nav>        
+
+                <div class="message">
+                    <form class="form-container">
+                        <div class="space-y-5">
+                            <div class="rules">
+                                <p class="deletion">
+                                   <span>Important Reminder:</span><br>
+                                   Currently, message deletion is not supported. Kindly double-check that your messages are appropriate before submitting.
+                                </p>
+                            </div>
+<br>
+                            <div class="input-group">
+                                <label for="recipient" class="font-medium text-sm">Recipient Name:</label>
+                                <input type="text" id="recipient" placeholder="Enter recipient's name..." required name="recipient" class="input-field">
+                            </div>
+<br>
+                            <div class="input-group">
+                                <label for="message" class="font-medium text-sm">Message:</label>
+                                <textarea id="message" placeholder="Write your message here..." required name="message" class="input-field"></textarea>
+                            </div>
+<br>
+                            <div class="submit-btn">
+                                <button type="submit" class="btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.querySelector('.form-container').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission reload
+    
+            // Get input values
+            const recipient = document.getElementById('recipient').value;
+            const message = document.getElementById('message').value;
+    
+            // Validate inputs
+            if (!recipient || !message) {
+                alert('Please fill in both fields.');
+                return;
+            }
+    
+            // Retrieve existing messages from localStorage or initialize an empty array
+            let messages = JSON.parse(localStorage.getItem('messages')) || [];
+    
+            // Add the new message
+            messages.push({ recipient, message });
+    
+            // Save back to localStorage
+            localStorage.setItem('messages', JSON.stringify(messages));
+    
+            // Optionally clear the form
+            document.getElementById('recipient').value = '';
+            document.getElementById('message').value = '';
+    
+            alert('Message submitted successfully!');
+    
+            // Redirect to Browse page (optional)
+            window.location.href = 'browse.html';
+        });
+    </script>
+    
+</body>
+</html>

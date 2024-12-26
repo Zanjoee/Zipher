@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zipher - Browse Messages</title>
+    <link rel="icon" href="/icon-512x512.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="__next">
+        <nav class="navbar">
+            <a href="/" class="logo_title">Zipher</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Submit</a></li>
+                <li><a href="#" class="active">Browse</a></li>
+            </ul>
+        </nav>        
+
+        <div class="browse-container">
+            <div class="messages-list">
+                <!-- Message template -->
+                <div class="message-item">
+                    <p class="recipient">To: <span>Zanjoe</span></p>
+                    <p class="message-text">"poging gumawa ng website"</p>
+                </div>
+
+                <!-- Additional messages will go here -->
+            </div>
+        </div>
+    </div>
+
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const messagesList = document.querySelector('.messages-list');
+    
+            // Retrieve messages from localStorage
+            let messages = JSON.parse(localStorage.getItem('messages')) || [];
+    
+            // Dynamically create message items
+            messages.forEach(({ recipient, message }) => {
+                const messageItem = document.createElement('div');
+                messageItem.classList.add('message-item');
+    
+                messageItem.innerHTML = `
+                    <p class="recipient">To: <span>${recipient}</span></p>
+                    <p class="message-text">"${message}"</p>
+                `;
+    
+                messagesList.appendChild(messageItem);
+            });
+        });
+    </script>
+    
+    
+    
+
+    
+    
+</body>
+</html>
