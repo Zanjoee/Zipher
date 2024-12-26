@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="icon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
@@ -35,27 +36,46 @@
 
     </style>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDpeWrys0S1GKYph2kwag13xe_twQd7y5Q",
+          authDomain: "zipher-fdbdc.firebaseapp.com",
+          projectId: "zipher-fdbdc",
+          storageBucket: "zipher-fdbdc.firebasestorage.app",
+          messagingSenderId: "842033938074",
+          appId: "1:842033938074:web:5555ff1001c823126e6923",
+          measurementId: "G-ZED9QKLT2T"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+      
         document.addEventListener('DOMContentLoaded', function () {
             const messagesList = document.querySelector('.messages-list');
-    
-            // Retrieve messages from localStorage
-            let messages = JSON.parse(localStorage.getItem('messages')) || [];
-    
-            // Dynamically create message items
-            messages.forEach(({ recipient, message }) => {
-                const messageItem = document.createElement('div');
-                messageItem.classList.add('message-item');
-    
-                messageItem.innerHTML = `
-                    <p class="recipient">To: <span>${recipient}</span></p>
-                    <p class="message-text">"${message}"</p>
-                `;
-    
-                messagesList.appendChild(messageItem);
+      
+            // Retrieve messages from Firebase
+            const messagesRef = ref(database, 'messages');
+            onValue(messagesRef, (snapshot) => {
+                messagesList.innerHTML = ''; // Clear previous messages
+                snapshot.forEach((childSnapshot) => {
+                    const { recipient, message } = childSnapshot.val();
+                    const messageItem = document.createElement('div');
+                    messageItem.classList.add('message-item');
+                    messageItem.innerHTML = `
+                        <p class="recipient">To: <span>${recipient}</span></p>
+                        <p class="message-text">"${message}"</p>
+                    `;
+                    messagesList.appendChild(messageItem);
+                });
             });
         });
-    </script>
+      </script>
+      
     
     
     
